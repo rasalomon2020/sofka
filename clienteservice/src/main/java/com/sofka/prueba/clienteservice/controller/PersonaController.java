@@ -24,20 +24,20 @@ public class PersonaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Persona> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Persona> buscarPersonaPorId(@PathVariable Long id) {
         return personaService.obtenerPersonaPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping(path = "/crear")
-    public ResponseEntity<Persona> crear(@RequestBody Persona persona) {
+    public ResponseEntity<Persona> crearPersona(@RequestBody Persona persona) {
         Persona guardada = personaService.altaPersona(persona);
         return ResponseEntity.status(HttpStatus.CREATED).body(guardada);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Persona> actualizar(@PathVariable Long id, @RequestBody Persona persona) {
+    public ResponseEntity<Persona> actualizarPersona(@PathVariable Long id, @RequestBody Persona persona) {
         return personaService.obtenerPersonaPorId(id)
                 .map(p -> {
                     p.setNombre(persona.getNombre());
@@ -52,7 +52,6 @@ public class PersonaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // DELETE: Eliminar persona por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         if (personaService.obtenerPersonaPorId(id).isPresent()) {

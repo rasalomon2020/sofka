@@ -1,13 +1,11 @@
 package com.sofka.prueba.clienteservice.model;
 
-import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-@Getter @Setter
 @Entity
-@Table(name = "cliente")
+@DiscriminatorValue("CLIENTE")
 public class Cliente extends Persona {
 
     private Long clienteId;
@@ -22,7 +20,29 @@ public class Cliente extends Persona {
     }
 
     public Cliente() {
-
     }
 
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }
