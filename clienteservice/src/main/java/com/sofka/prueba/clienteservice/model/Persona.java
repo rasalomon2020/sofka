@@ -3,9 +3,11 @@ package com.sofka.prueba.clienteservice.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Persona {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+@Table(name = "Cliente")
+public abstract class Persona {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +15,8 @@ public class Persona {
     private String nombre;
     private String genero;
     private int edad;
+
+    @Column(unique = true)
     private String identificacion;
     private String direccion;
     private String telefono;
