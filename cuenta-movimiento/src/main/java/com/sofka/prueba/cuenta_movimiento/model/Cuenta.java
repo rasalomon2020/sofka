@@ -17,6 +17,16 @@ public class Cuenta {
     private Double saldoInicial;
     private Boolean estado;
 
+    private Long clienteId;
+
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
+    }
+
     public Long getCuentaId() {
         return cuentaId;
     }
@@ -57,12 +67,13 @@ public class Cuenta {
         this.estado = estado;
     }
 
-    public Cuenta(Long cuentaId, String numeroCuenta, String tipoCuenta, Double saldoInicial, Boolean estado) {
+    public Cuenta(Long cuentaId, String numeroCuenta, String tipoCuenta, Double saldoInicial, Boolean estado, Long clienteId) {
         this.cuentaId = cuentaId;
         this.numeroCuenta = numeroCuenta;
         this.tipoCuenta = tipoCuenta;
         this.saldoInicial = saldoInicial;
         this.estado = estado;
+        this.cuentaId = clienteId;
     }
 
     public Cuenta() {

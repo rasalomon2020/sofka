@@ -20,7 +20,7 @@ public class CuentaController {
 
     @GetMapping(path = "/cuentas")
     public List<Cuenta> listarCuentas() {
-       return cuentaService.listarCuntas();
+       return cuentaService.listarCuentas();
     }
 
     @GetMapping(path = "/{id}")
