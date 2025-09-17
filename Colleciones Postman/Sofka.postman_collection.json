@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "e98c565d-64d8-45e0-849a-7650c6b2e09e",
+		"name": "Sofka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14565654"
+	},
+	"item": [
+		{
+			"name": "crearCliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clienteId\": 9,\r\n    \"nombre\": \"Ana López\",\r\n    \"genero\": \"Femenino\",\r\n    \"edad\": 25,\r\n    \"identificacion\": \"87654321\",\r\n    \"direccion\": \"Av. Libertador 456\",\r\n    \"telefono\": \"094987654\",\r\n  \"contrasena\": \"claveSegura456\",\r\n  \"estado\": \"Activo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1c/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1c",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearCliente para Prubas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"clienteId\": \"8\",\r\n  \"contrasena\": \"PASS-SEGURO-123\",\r\n  \"estado\": \"ACTIVO\",\r\n  \"nombre\": \"Mai\",\r\n  \"genero\": \"Femenino\",\r\n  \"edad\": 25,\r\n  \"identificacion\": \"6567987645\", \r\n  \"direccion\": \"General Rivera\",\r\n  \"telefono\": \"95495191\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1c/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1c",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"clienteId\": \"19\",\r\n  \"contrasena\": \"PASS-SEGURO-123\",\r\n  \"estado\": \"ACTIVO\",\r\n  \"nombre\": \"Mai\",\r\n  \"genero\": \"Femenino\",\r\n  \"edad\": 25,\r\n  \"identificacion\": \"6567987645\", \r\n  \"direccion\": \"General Rivera\",\r\n  \"telefono\": \"95495191\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1c/19",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1c",
+						"19"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearPersona",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n  \"nombre\": \"Pepe\",\r\n  \"genero\": \"masculino\",\r\n  \"edad\": 35,\r\n  \"identificacion\": \"5987989\",\r\n  \"direccion\": \"Maldonado 881\",\r\n  \"telefono\": \"4654888795\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1p/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1p",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarPersona",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Pepito\",\r\n  \"genero\": \"masculino\",\r\n  \"edad\": 28,\r\n  \"identificacion\": \"698744\",\r\n  \"direccion\": \"Ave Italia y Comercio\",\r\n  \"telefono\": \"654778863\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1p/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1p",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listarPersona",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1p/obtener",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1p",
+						"obtener"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearCuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"numeroCuenta\": \"1234567890\",\r\n  \"tipoCuenta\": \"AHORROS\",\r\n  \"saldoInicial\": 1500.00,\r\n  \"estado\": true,\r\n  \"clienteId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearMovimientoDebito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tipoMovimiento\": \"RETIRO\",\r\n  \"valor\": 200.00,\r\n  \"cuenta\": {\r\n    \"id\": 1\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/movimientos/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"movimientos",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearMovimientoCredito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tipoMovimiento\": \"DEPOSITO\",\r\n  \"valor\": 5000.00,\r\n  \"cuenta\": {\r\n    \"cuentaId\": 1\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/movimientos/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"movimientos",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
