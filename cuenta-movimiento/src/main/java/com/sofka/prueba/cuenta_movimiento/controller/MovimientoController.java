@@ -20,7 +20,7 @@ public class MovimientoController {
     }
 
     @PostMapping(path = "/crear")
-    public ResponseEntity<Movimiento> registrar(@RequestBody Movimiento movimiento) {
+    public ResponseEntity<Movimiento> registrarMovimiento(@RequestBody Movimiento movimiento) {
         Movimiento registrado = movimientoService.registrarMovimiento(movimiento);
         return ResponseEntity.ok(registrado);
     }

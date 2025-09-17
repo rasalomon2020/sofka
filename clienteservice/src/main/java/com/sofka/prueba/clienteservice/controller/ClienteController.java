@@ -5,6 +5,7 @@ import com.sofka.prueba.clienteservice.service.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,9 +24,10 @@ public class ClienteController {
         return clienteService.listarClientes();
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable Long id) {
-        return clienteService.obtenerClientePorId(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Cliente cliente = clienteService.obtenerClientePorId(id); // lanza excepción si no existe
+        return ResponseEntity.ok(cliente);
     }
 
     @PostMapping(path = "/crear")
@@ -34,31 +36,34 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteGuardado);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<Cliente> actualizarCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
-        return clienteService.obtenerClientePorId(id).map(c -> {
-            c.setContrasena(cliente.getContrasena());
-            c.setEstado(cliente.getEstado());
-            c.setNombre(cliente.getNombre());
-            c.setGenero(cliente.getGenero());
-            c.setEdad(cliente.getEdad());
-            c.setDireccion(cliente.getDireccion());
-            c.setIdentificacion(cliente.getIdentificacion());
-            c.setTelefono(cliente.getTelefono());
-            Cliente actualizado = (Cliente) clienteService.crearCliente(c).getBody();
-            return ResponseEntity.ok(actualizado);
-        }).orElse(ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/id")
-    public ResponseEntity<Void> eliminarCliente(@PathVariable Long id) {
-        if (clienteService.obtenerClientePorId(id).isPresent()) {
-            clienteService.eliminarCliente(id);
-            return ResponseEntity.noContent().build();
+        if (cliente == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El cuerpo de la solicitud no puede ser nulo.");
         }
-        return ResponseEntity.notFound().build();
+
+        Cliente existente = clienteService.obtenerClientePorId(id); // lanza excepción si no existe
+
+        existente.setContrasena(cliente.getContrasena());
+        existente.setEstado(cliente.getEstado());
+        existente.setNombre(cliente.getNombre());
+        existente.setGenero(cliente.getGenero());
+        existente.setEdad(cliente.getEdad());
+        existente.setDireccion(cliente.getDireccion());
+        existente.setIdentificacion(cliente.getIdentificacion());
+        existente.setTelefono(cliente.getTelefono());
+
+        Cliente actualizado = clienteService.actualizarCliente(existente); // nuevo método en el servicio
+
+        return ResponseEntity.ok(actualizado);
     }
 
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarCliente(@PathVariable Long id) {
+        clienteService.eliminarCliente(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
 

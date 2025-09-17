@@ -1,38 +1,17 @@
-package com.sofka.prueba.clienteservice.model;
+package com.sofka.prueba.cuenta_movimiento.dto;
 
-import jakarta.persistence.*;
-
-import java.io.Serializable;
-
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-@Table(name = "Cliente")
-public class Persona implements Serializable {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ClienteDto {
     private Long personaId;
     private String nombre;
     private String genero;
     private int edad;
-
-    @Column(unique = true)
     private String identificacion;
     private String direccion;
     private String telefono;
+    private String contrasena;
+    private String estado;
 
-    public Persona(String nombre, String genero, int edad, String identificacion, String direccion, String telefono) {
-        this.nombre = nombre;
-        this.genero = genero;
-        this.edad = edad;
-        this.identificacion = identificacion;
-        this.direccion = direccion;
-        this.telefono = telefono;
-    }
-
-    public Persona(Long personaId, String nombre, String genero, int edad, String identificacion, String direccion, String telefono) {
+    public ClienteDto(Long personaId, String nombre, String genero, int edad, String identificacion, String direccion, String telefono, String contrasena, String estado) {
         this.personaId = personaId;
         this.nombre = nombre;
         this.genero = genero;
@@ -40,9 +19,11 @@ public class Persona implements Serializable {
         this.identificacion = identificacion;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.contrasena = contrasena;
+        this.estado = estado;
     }
 
-    public Persona() {
+    public ClienteDto() {
     }
 
     public Long getPersonaId() {
@@ -101,15 +82,19 @@ public class Persona implements Serializable {
         this.telefono = telefono;
     }
 
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", genero='" + genero + '\'' +
-                ", edad=" + edad +
-                ", identificacion='" + identificacion + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", telefono='" + telefono + '\'' +
-                '}';
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

@@ -2,11 +2,14 @@ package com.sofka.prueba.clienteservice.model;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+
+import java.io.Serializable;
 
 @Entity
 @DiscriminatorValue("CLIENTE")
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Long clienteId;
     private String contrasena;
